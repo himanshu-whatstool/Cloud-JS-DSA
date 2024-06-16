@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index String</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script type="text/javascript">
+
+    function VerifyEmail() {
+      var email = document.getElementById("txtid").value;
+      var error = document.getElementById("error");
+
+      if (email.indexOf("@") == -1) {
+        error.innerHTML = "Plz include @ in email".fontcolor("red");
+        console.log("if error clicked");
+      }
+    }
+
+    function verifypassword() {
+      var password = document.getElementById("passwordid").value;
+
+      if (password.trim() == "admin") {
+        document.write("login Success")
+      } else {
+        document.write("Invalid Password")
+      }
+    }
+
+    var x = "hitesh"
+    console.log("krishna:", typeof "hitesh");
+
+  </script>
+</head>
+
+<body class="container">
+  <fieldset>
+    <legend>string</legend>
+    <input type="email" onblur="VerifyEmail()" id="txtid">
+    <small id="error"></small>
+
+    <legend>Password</legend>
+    <input type="password" id="passwordid">
+    <button onclick="verifypassword()">Submit</button>
+
+  </fieldset>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String manipulation</title>
+</head>
+<script type="text/javascript">
+  function verifyUsername() {
+    var username = document.getElementById("UserName").value;
+    var usererror = document.getElementById("UserError");
+    var firstCharode = username.charCodeAt(0);
+
+    if (firstCharode >= 65 && firstCharode <= 90) {
+      usererror.innerHTML = "";
+    } else {
+      usererror.innerHTML = "Name must start with uppercase letter".fontcolor('red')
+    }
+  }
+
+</script>
+
+<body>
+  username:<input onblur="verifyUsername()" id="UserName" type="text">
+  <div id="UserError"></div>
+</body>
+
+</html>

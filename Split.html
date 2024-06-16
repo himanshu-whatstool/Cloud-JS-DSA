@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<script>
+  var contacts = "John : 6638726268, David : 7865456432"
+  var [john, david] = contacts.split(',');
+  document.write(david + "</br>" + "</br>");
+
+  var x = false;
+
+  if (x == 1) {
+    document.write("X is true");
+  } else {
+    document.write("X is false")
+  }
+
+  function verifyUsername() {
+    var username = document.getElementById("textid").value;
+    var password = document.getElementById("passwordid")
+
+    if (username == '') {
+      password.disabled = true;
+    } else {
+      password.disabled = false;
+    }
+  }
+
+  function verifyPassword() {
+    var password = document.getElementById("passwordid").value;
+    var loginbtn = document.getElementById("btnlogin");
+
+    if (password.trim() == 'admin') {
+      loginbtn.disabled = false;
+      console.log("admin if cond");
+    } else {
+      loginbtn.disabled = true;
+      console.log("admin else cond");
+    }
+  }
+</script>
+
+<body class="container">
+  <div class="row">
+    <div class="col-5">
+      <h2>Login</h2>
+      <div class="mb-3">
+        <label>Username</label>
+        <input onblur="verifyUsername()" type="text" class="form-control" id="textid">
+      </div>
+      <div>
+        <label>Password</label>
+        <input onblur="verifyPassword()" disabled type="password" class="form-control" id="passwordid">
+      </div>
+      <button disabled id="btnlogin" class="btn btn-sm mt-4 text-white"
+        style="background-color: #00A82D;">Login</button>
+    </div>
+  </div>
+</body>
+
+</html>

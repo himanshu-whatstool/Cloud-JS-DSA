@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boilerplate code</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    form {
+      border: 1px solid #616874;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 25px;
+    }
+
+    .dark-mode {
+      background: #273041;
+      color: #fff;
+    }
+
+    .white-mode {
+      background: #fff;
+      color: #273041;
+    }
+
+    .valid-style {
+      border: 1px solid red;
+      box-shadow: 0px 0px 1px 0px #ff0000;
+      width: -webkit-fill-available;
+      border-radius: 4px;
+      padding: 10px;
+    }
+
+    .invalid-style {
+      border: 1px solid green;
+      box-shadow: px 0px 1px 0px #00A82D;
+      width: -webkit-fill-available;
+      border-radius: 4px;
+      padding: 10px;
+    }
+
+    meter {
+      width: 300px;
+    }
+  </style>
+  <script type="text/javascript">
+    "use-strict";
+    function ChangeMode() {
+      var theme = document.getElementById("darkSwitch");
+      var themetext = document.getElementById("switchlabel");
+
+      if (theme.checked) {
+        document.querySelector("form").className = "bg-dark text-white";
+        document.querySelector("button").className = "btn btn-light w-50 mt-4";
+        (document.body.setAttribute("data-theme", "dark"),
+          localStorage.setItem("darkSwitch", "dark"));
+        themetext.innerHTML = "Light Mode";
+      } else {
+        document.querySelector("form").className = "bg-light text-dark";
+        document.querySelector("button").className = "btn btn-dark w-50 mt-4";
+        (document.body.removeAttribute("data-theme"),
+          localStorage.removeItem("darkSwitch"));
+        themetext.innerHTML = "Dark Mode";
+      }
+    }
+
+    function registerClick() {
+      var desc = document.getElementById("textid").value;
+      var descerror = document.getElementById("descerr")
+
+      var password = document.getElementById("passwordid").value;
+      var passworderror = document.getElementById("passworderr")
+
+      var email = document.getElementById("emailid").value;
+      var emailerror = document.getElementById("emailerr")
+
+      document.getElementById("viewtable").style.display = "block";
+      document.getElementById("desclbl").innerHTML = desc;
+      document.getElementById("passlbl").innerHTML = password;
+      document.getElementById("emaillbl").innerHTML = email;
+
+      // if (desc == "") {
+      //   descerror.innerHTML = "Required field!".fontcolor("red").italics()
+      //   document.getElementById("textid").className = 'valid-style';
+      // }
+
+
+      if (desc.trim() !== '') {
+        let newParagraph = document.createElement('p');
+
+        newParagraph.innerText = "cloud" + newParagraph;
+        document.getElementById('displaySection').appendChild(newParagraph);
+
+        document.getElementById("textid").value = '';
+      }
+
+      if (password == "") {
+        passworderror.innerHTML = "Required field!".fontcolor("red").italics()
+        document.getElementById("passwordid").className = 'valid-style';
+      }
+
+      if (email == "") {
+        emailerror.innerHTML = "Required field!".fontcolor("red").italics()
+        document.getElementById("emailid").className = 'valid-style';
+      }
+
+      var activecheckbox = document.getElementById("emailswitch");
+      activemessage = "";
+
+      if (activecheckbox.checked) {
+        activemessage = "Active";
+      } else {
+        activemessage = "Deactive";
+      }
+      document.getElementById("activelbl").innerHTML = activemessage;
+
+      // document.getElementById("textid").value = '';
+      // document.getElementById("passwordid").value = '';
+      // document.getElementById("emailid").value = '';
+    }
+
+    function descblur() {
+      var desc = document.getElementById("textid").value;
+      var descerror = document.getElementById("descerr")
+
+      if (desc != "") {
+        descerror.innerHTML = "verified field"
+        descerror.className = "text-success"
+        descerror.style.fontFamily = "roboto"
+        // document.getElementById("textid").className = "invalid-style";
+        document.getElementById("textid").className = "border border-success w-100 rounded-sm shadow-sm p-2";
+      }
+    }
+
+    function passwordblur() {
+      var password = document.getElementById("passwordid").value;
+      var passworderror = document.getElementById("passworderr");
+      var regExp = /(?=.*[A-Z])\w{4,15}/;
+
+      if (password.match(regExp)) {
+        passworderror.innerHTML = "Strong Password".fontcolor("green");
+        meterclick(0, 100, 100, 0, 0);
+        console.log("if cond clicked");
+      } else {
+        if (password.length <= 5) {
+          passworderror.innerHTML = "Poor Password".fontcolor("red");
+          meterclick(0, 100, 100, 60, 80);
+        } else {
+          passworderror.innerHTML = "Weak Password".fontcolor("red");
+          meterclick(0, 100, 100, 40, 80);
+        }
+      }
+    }
+
+    function passwordclick() {
+      var passwordseen = document.getElementById("passwordid");
+      if (passwordseen.type === "password") {
+        passwordseen.type = "text"
+      } else {
+        passwordseen.type = "password"
+      }
+    }
+
+    function meterclick(min, max, value, low, high) {
+      var setmeter = document.getElementById("MeterStatus");
+      setmeter.min = min;
+      setmeter.max = max;
+      setmeter.value = value;
+      setmeter.low = low;
+      setmeter.high = high;
+    }
+
+    function emailblur() {
+      var email = document.getElementById("emailid").value;
+      var emailerror = document.getElementById("emailerr");
+
+      if (email.endsWith("@gmail.com")) {
+        emailerror.innerHTML = "verified".fontcolor("green")
+        document.getElementById("emailid").className = "border border-success w-100 rounded-sm shadow-sm p-2"
+      } else {
+        emailerror.innerHTML = "plz enter a valid email Id".fontcolor("red")
+        document.getElementById("emailid").className = "border border-danger w-100 rounded-sm shadow-sm p-2"
+      }
+    }
+    function emailkeyup() {
+      var emailkey = document.getElementById("emailid").value;
+      document.getElementById("emailid").value = emailkey.toLowerCase();
+    }
+
+    // document.getElementById("formsubmitted").addEventListener('submit', function () {
+    // })
+
+  </script>
+</head>
+
+<body class="container" style="font-size: 14px;">
+  <div class="row">
+    <div class="col-8">
+      <form id="formsubmitted">
+        <div class="custom-switch">
+          <input onchange="ChangeMode()" type="checkbox" class="custom-control-input" id="darkSwitch">
+          <label id="switchlabel" class="custom-control-label" for="darkSwitch">Dark mode</label>
+        </div>
+        <h6 class="mt-3 fw-semibold">Register</h6>
+        <div class="mb-3 mt-4">
+          <label for="textid">Enter Description</label>
+          <textarea autofocus onblur="descblur()" type="text" rows="3" class="form-control"
+            placeholder="please enter description here" id="textid"></textarea>
+          <span><small id="descerr"></small></span>
+        </div>
+        <div class="mb-3">
+          <label for="passwordid">Enter Password</label>
+          <input onkeyup="passwordblur()" type="password" class="form-control mb-2 metercolor"
+            placeholder="please password here" id="passwordid">
+          <div style="cursor: pointer;"><input style="cursor: pointer;" onclick="passwordclick()"
+              type="checkbox">&nbsp;&nbsp;show password</div>
+          <div><small id="passworderr"></small></div>
+          <div>
+            <meter style="cursor: pointer;" value="" id="MeterStatus" min="1" max="100"></meter>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="emailid">Enter Email</label>
+          <input onblur="emailblur()" type="email" onkeyup="emailkeyup()" class="form-control"
+            placeholder="please email here" id="emailid"><span><small id="emailerr"></small></span>
+        </div>
+        <div class="custom-switch">
+          <input type="checkbox" class="custom-control-input" id="emailswitch">
+          <label class="custom-control-label" for="emailswitch">email active</label>
+        </div>
+        <button onclick="registerClick()" type="button" class="btn btn-sm btn-dark mt-4 p-1">Submit form</button>
+      </form>
+    </div>
+    <div id="viewtable" class="col-4 mt-4"
+      style="height: auto; min-height: 80vh; border-left: 1px dashed #616874; padding-left: 14px; display: none;">
+      <p style="color: hsl(218, 9%, 42%); text-align: center;">Display the input value</p>
+      <table class="table w-100">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col">Password</th>
+            <th scope="col">Email</th>
+            <th scope="col">isActive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="desclbl"></td>
+            <td id="passlbl"></td>
+            <td id="emaillbl"></td>
+            <td id="activelbl"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

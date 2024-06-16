@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boilerplate code</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script type="text/javascript">
+    "use strict";
+
+    function detailsdisplay() {
+      document.getElementById("tableui").style.display = "block";
+      document.getElementById("labusername").innerHTML = document.getElementById("username").value;
+      document.getElementById("labpassword").innerHTML = document.getElementById("password").value;
+      document.getElementById("labdob").innerHTML = document.getElementById("dob").value;
+      document.getElementById("labage").innerHTML = document.getElementById("age").value;
+      document.getElementById("labwebsite").innerHTML = document.getElementById("website").value;
+      document.getElementById("labemail").innerHTML = document.getElementById("email").value;
+      
+    }
+
+    // username = prompt("Enter Name")
+    // document.write(username);
+    // document.write(username);
+
+    //  document.write(prompt("Enter Name"))
+    x = 10;
+    document.write("X=" + x)
+    var x; // that called a Hoisting
+
+  </script>
+</head>
+
+<body class="container-lg">
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3 mt-4">
+        <label for="username">UserName</label>
+        <input class="form-control" type="text" placeholder="Enter Username" id="username">
+      </div>
+      <div class="mb-3">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" placeholder="Enter Password" id="password">
+      </div>
+      <div class="mb-3">
+        <label for="dob">Date of Birth</label>
+        <input class="form-control" type="date" placeholder="Enter DOB" id="dob">
+      </div>
+      <div class="mb-3">
+        <label for="age">Age</label>
+        <input class="form-control" type="number" placeholder="Enter Age" id="age">
+      </div>
+      <div class="mb-3">
+        <label for="email">Enter Email</label>
+        <input class="form-control" type="email" placeholder="Enter Email" id="email">
+      </div>
+      <div class="mb-4">
+        <label for="website">Website</label>
+        <input class="form-control" type="url" placeholder="Enter Website" id="website">
+      </div>
+      <div>
+        <button onclick="detailsdisplay()" class="btn btn-primary btn-sm ">Details of display</button>
+      </div>
+    </div>
+    <div class="col-8" id="tableui" style="display: none;">
+      <table class="mt-4 w-100" style="table-layout: fixed; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: lemonchiffon; border-bottom: 1px solid #616874;">
+            <td id="labusername" style="width: 16.66%;"></td>
+            <td id="labpassword" style="width: 16.66%;"></td>
+            <td id="labdob" style="width: 16.66%;"></td>
+            <td id="labage" style="width: 16.66%;"></td>
+            <td id="labemail" style="width: 16.66%;"></td>
+            <td id="labwebsite" style="width: 16.66%;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div>
+        <button class="btn-btn-sm">Edit Details</button>
+      </div> -->
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+
+</html>

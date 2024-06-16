@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<script type="text/javascript">
+
+  var categoryarr = ["All", "electronics", "Footwear", "fashion", "cloud", "solutions", "clothes"];
+  // categoryarr.splice(1, 3, "infosys", "wipro");
+  function bodyloading() {
+    loadCategories();
+  }
+
+  function loadCategories() {
+    document.querySelector("ol").innerHTML = "";
+    document.querySelector("select").innerHTML = "";
+    document.querySelector("tbody").innerHTML = "";
+    document.querySelector("ul").innerHTML = "";
+    document.querySelector("nav").innerHTML = "";
+
+    for (var item of categoryarr) {
+      var createlist = document.createElement('li');
+      createlist.innerHTML = item;
+      document.querySelector("ol").appendChild(createlist);
+
+      var option = document.createElement("option");
+      option.text = item;
+      option.value = item;
+      document.querySelector("select").appendChild(option);
+
+      var tr = document.createElement("tr");
+      var td = document.createElement("td");
+      td.innerHTML = item;
+      tr.appendChild(td);
+      document.querySelector("tbody").appendChild(tr);
+
+      var checkLi = document.createElement("li");
+      checkLi.innerHTML = `<input type="checkbox">${item}`;
+      document.querySelector("ul").appendChild(checkLi);
+
+      var div = document.createElement("div")
+      div.innerHTML = `<button style="width:200px; margin-top:20px;" >${item}</button>`
+
+      document.querySelector("nav").appendChild(div);
+    }
+  }
+
+  function addClick() {
+
+    var categoryname = document.getElementById("txtcategory").value;
+    if (categoryarr.indexOf(categoryname) == -1) {
+      categoryarr.unshift(categoryname);
+      alert(`${categoryname} Add to List`)
+      loadCategories();
+      document.getElementById("txtcategory").value = "";
+    }else{
+      alert(`${categoryname} Exists`)
+    }
+
+
+
+
+  }
+
+  function removeBtn() {
+    var categname = document.querySelector("select").value;
+    var index = categoryarr.indexOf(categname);
+    categoryarr.splice(index, 1);
+    loadCategories();
+  }
+
+</script>
+
+<style>
+  .container {
+    display: flex;
+  }
+
+  .box {
+    margin-right: 32px;
+  }
+
+  ul {
+    list-style: none;
+    height: 80px;
+    border: 2px solid blueviolet;
+    padding: 10px;
+    overflow-y: auto;
+  }
+</style>
+
+<body onload="bodyloading()">
+  <div style="margin-bottom: 20px;">
+    New Category:
+    <input type="text" id="txtcategory">
+    <button onclick="addClick()">Add</button>
+  </div>
+  <div class="container">
+    <div class="box">
+      <h4>Categories List</h4>
+      <ol>
+
+      </ol>
+    </div>
+    <div class="box">
+      <h4>select categories</h4>
+      <select>
+
+      </select>
+      <br><br>
+      <button onclick="removeBtn()">Remove</button>
+    </div>
+    <div class="box">
+      <h4>categories Menu</h4>
+      <table border="1" width="200">
+        <thead>
+          <tr>
+            <th>select categories</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="box">
+      <h4>check List</h4>
+      <ul></ul>
+    </div>
+    <div class="box">
+      <h4>nav buttons</h4>
+      <nav></nav>
+    </div>
+  </div>
+</body>
+
+</html>

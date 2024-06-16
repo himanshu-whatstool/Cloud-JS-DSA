@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side-by-Side Sections</title>
+  <link rel="stylesheet" href="recycla.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script>
+
+    function addItemId() {
+
+      var selectone = document.getElementById("select1").value;
+      var selecttwo = document.getElementById("select2").value;
+      var selectthree = document.getElementById("select3").value;
+
+      var removeid = document.getElementById("removeid")
+
+
+      if (selectone && selecttwo && selectthree) {
+
+        var createheadone = document.createElement("h6");
+        var createheadtwo = document.createElement("h6");
+        var createheadthree = document.createElement("h6");
+
+        createheadone.innerHTML = selectone;
+        createheadtwo.innerHTML = selecttwo;
+        createheadthree.innerHTML = selectthree;
+
+        const removebtn = document.createElement("button");
+        removebtn.textContent = "Remove-";
+        removebtn.className = "remove-btn";
+        removebtn.onclick = function () {
+          createheadone.remove();
+          createheadtwo.remove();
+          createheadthree.remove();
+          removeid.remove();
+        }
+
+        document.getElementById("lblmaterial").appendChild(createheadone);
+        document.getElementById("lblquantity").appendChild(createheadtwo);
+        document.getElementById("lbldensity").appendChild(createheadthree);
+        document.getElementById("lblremove").appendChild(removebtn);
+
+        document.getElementById("select1").value = "";
+        document.getElementById("select2").value = "";
+        document.getElementById("select3").value = "";
+      } else {
+        alert("plz select values of all fields")
+      }
+    }
+
+    function handlenextfirst() {
+
+      document.getElementById("inquirysection").style.display = "block";
+      document.getElementById("recyclasection").style.display = "none";
+
+    }
+
+  </script>
+
+</head>
+
+<body style="background-color: #fffff9;">
+  <div class="maincontainer">
+    <h4>Inquiry for: Scrap & Metals</h4>
+    <div class="container">
+
+      <section id="recyclasection" class="section left content active">
+        <div class="progress-container">
+          <div class="progress" id="progress"></div>
+          <div class="circle active">1</div>
+          <div class="circle">2</div>
+          <div class="circle">3</div>
+        </div>
+        <div>
+          <h1>Tell us about your junk</h1>
+
+          <p>Specify your scrap and/or metal. We want to know what kind of material you have and how large the volumes
+            are. You can choose several combinations!</p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <select id="select1" style="padding: 10px; border-radius: 5px;" name="cars">
+              <option value="" hidden>Selet Options</option>
+              <option value="aluminium">Aluminium</option>
+              <option value="batteries">Batteries</option>
+              <option value="mixedScrap">Mixed Scrap</option>
+              <option value="lead">Lead</option>
+              <option value="bronze">Bronze</option>
+              <option value="electronic">Electronic Scrap</option>
+              <option value="gold">Gold</option>
+              <option value="carbide">Carbide</option>
+              <option value="scrap">Scrap icon</option>
+              <option value="cable">Cable Scrap(AI)</option>
+              <option value="cableScrap">Cable Scrap(CU)</option>
+              <option value="copper">Copper</option>
+              <option value="chromium">Chromium</option>
+              <option value="brass">Brass</option>
+              <option value="platinum">Platinum</option>
+              <option value="stailless">Stailless</option>
+              <option value="silver">Silver</option>
+              <option value="steel">Steel</option>
+              <option value="tantalum">Tantalum</option>
+              <option value="zinc">Zinc</option>
+            </select>
+          </div>
+          <div class="column">
+            <input id="select2" type="number" placeholder="Quantity" style="padding: 8px; border-radius: 5px;"
+              name="quantity">
+          </div>
+          <div class="column">
+            <select id="select3" style="padding: 10px; border-radius: 5px; width: 8vw;" name="quantity">
+              <option value="" selected disabled hidden>Select Options</option>
+              <option value="tonee">tone</option>
+              <option value="kgs">Kg</option>
+            </select>
+          </div>
+          <div class="column">
+            <button type="button" onclick="addItemId()" class="addbtn">add +</button>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div id="lblmaterial" class="column"></div>
+            <div id="lblquantity" class="column"> </div>
+            <div id="lbldensity" class="column"> </div>
+            <div id="lblremove" class="column"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <span id="itemList"></span>
+        </div>
+
+        <hr />
+        <b>we need pictues from you</b>
+        <div style="border: 1px dashed #616874; padding: 20px; border-radius: 12px; margin-top: 25px;">
+          <div class="file-upload-row">
+            <div class="file-upload">
+              <i class="fa fa-arrow-up fa-3x"></i>
+              <label for="file1">
+                <input type="file" id="file1" accept="image/*">Please Upload at least one image to make it easier for us
+                to give you the most correct price proposal.Many thanks for your help!</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button onclick="handlenextfirst()" style="margin-top: 30px; float: inline-end;"
+            class="nextbtn">Next+</button>
+        </div>
+      </section>
+
+      <div style="display: none;" id="inquirysection" class="inquiry inqleft" id="inquiryContainer">
+
+        <p style="color: #273041; font-weight: 600; font-family: poppins;">Who are you and how should the scrap be
+          handled?</p>
+
+        <div style="display: flex; flex-wrap: wrap; column-gap: 6px;">
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">PrivatePerson</p>
+            </span>
+          </div>
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Association</p>
+            </span>
+          </div>
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Business</p>
+            </span>
+          </div>
+        </div>
+        <div style="padding-top: 40px;">
+          <p style="color: #273041; font-weight: 600; font-family: poppins;">Do you want the material collected or do
+            you want to leave it yourself?</p>
+          <div style="display: flex; column-gap: 18px; flex-wrap: wrap;">
+            <div
+              style="flex: 33%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+              <span><input type="radio" style="position: absolute;">
+                <p style="padding-left: 30px;">Iwantitpickedup</p>
+              </span>
+            </div>
+            <div
+              style="flex: 33%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+              <span><input type="radio" style="position: absolute;">
+                <p style="padding-left: 30px;">Iwanttoleaveitalone</p>
+              </span>
+            </div>
+            <div style="flex: 33%; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            </div>
+          </div>
+        </div>
+
+        <p style="color: #273041; font-weight: 600; font-family: poppins; padding-top: 40px;">Enter your address and we
+          will look for local
+          scrap dealers</p>
+        <div style="padding-top: 20px; display: flex;">
+          <div style="border: 1px solid #e8e8e8; height: 3rem; border-radius: 4px; width: 80vw;">
+            <input type="search" placeholder="search your address" name="search"
+              style="border: none; outline: none;padding: 7px 12px;">
+          </div>
+          <div style="border:1px solid #e8e8e8; width: 10vw; text-align: center;">
+            <i style=" margin-top: 12px;" class="fas fa-location"></i>
+          </div>
+        </div>
+
+        <p style="color: #273041; font-weight: 600; font-family: poppins; padding-top: 40px;">When do you want help?</p>
+        <div style="display: grid; grid-template-columns: auto auto auto; flex-wrap: wrap; column-gap: 6px;">
+
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">PrivatePerson</p>
+            </span>
+          </div>
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Association</p>
+            </span>
+          </div>
+          <div
+            style="flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Business</p>
+            </span>
+          </div>
+          <div
+            style="margin-top: 20px; flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Business</p>
+            </span>
+          </div>
+          <div
+            style="margin-top: 20px; flex: 30%; border: 1px solid #e8e8e8; padding: 1em; align-items: center; border-radius: 4px; display: flex; width: 100%;">
+            <span><input type="radio" style="position: absolute;">
+              <p style="padding-left: 30px;">Business</p>
+            </span>
+          </div>
+        </div>
+
+        <div style="padding-top: 40px;">
+          <button onclick="handlebacksecond()"
+            style=" padding: 12px 20px; border-radius: 4px; border: none;">Back</button>
+          <button onclick="handlenextsecond()"
+            style=" float: inline-end; background-color: #01ff85; padding: 12px 20px; border-radius: 4px; border: none;">Next</button>
+        </div>
+
+      </div>
+
+      <div style="display: none;" id="formsection" class="inquiry inqleft">
+        <h5 style="color: #273041; font-weight: 600; padding-top: 40px; font-size: 28px; ">Final details</h5>
+        <p style="color: #273041; font-weight: 600; padding-top: 40px;">Anything else we should know about your
+          assignment?</p>
+        <textarea placeholder="A good and clear description gets more and better answers" rows="4"
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"></textarea>
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px;">First Name</p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em;  width: 90%;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="firstName">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px; ">Surname</p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="Surname">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px; ">Namn på förening</p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="Brf namn">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px; ">E-mail</p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="Email Address">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px; ">Confirm e-mail</p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="Confirm Email Address">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px; ">Phone number
+        </p>
+        <input
+          style="border: 1px solid #dbdbdb; border-radius: 4px; padding: 1em; width: 90%;   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+          type="text" placeholder="Phone number">
+
+        <p style="color: #273041; font-weight: 600; padding-top: 15px;">Promo code</p>
+        <input class="promo" type="text" placeholder="Promo code">
+
+        <div style="display: flex; column-gap: 4px; padding-top: 16px; ">
+          <input type="checkbox" name="" id="">
+          <p>Accept&nbsp;<span><a style="text-decoration: none; color: #00A82D;"
+                href="https://www.recycla.se/allmanna-villkor-anvandare" target="_blank">Terms of
+                use</a></span>&nbsp;and<span><a style="text-decoration: none; color: #00A82D;"
+                href="https://www.recycla.se/integritetspolicy" target="_blank">&nbsp;Privacy Policy</a></span></p>
+        </div>
+
+        <div style="display: flex; column-gap: 4px; padding-top: 16px;">
+          <input type="checkbox" name="" id="">
+          <p>Yes thankyou, I want newsletter with offers and discounts</p>
+        </div>
+
+
+        <button onclick="handlebackthird()" style=" padding: 12px 20px; border-radius: 4px; border: none;">Back</button>
+        <button
+          style=" float: inline-end; background-color: #01ff85; padding: 12px 20px; border-radius: 4px; border: none;">Next</button>
+
+      </div>
+
+      <section class="section right">
+        <h1 class="fw-bold">How does Recycla work?</h1>
+        <ul>
+          <li>Fill in the form what you need help with. A clear description provides faster and more precise prices/cost
+            proposals.</li></br>
+          <li>After we receive the request, we will match it with recycling companies in your area and you will receive
+            1-4 price/cost proposals to compare shortly.</li></br>
+          <li>Then choose the company you are most happy with and let them do the rest!</li>
+        </ul>
+        <div style="display: flex; align-items: center; column-gap: 7px;">
+          <img src="cloudform.svg" alt="cloud">
+          <p>Gratis offerttjänst</p>
+        </div>
+        <div style="display: flex; align-items: center; column-gap: 7px;">
+          <img src="cloudform.svg" alt="cloud">
+          <p>Spara pengar</p>
+        </div>
+        <div style="display: flex; align-items: center; column-gap: 7px;">
+          <img src="cloudform.svg" alt="cloud">
+          <p>Minska klimatpåverkan</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

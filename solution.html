@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    header {
+      margin: auto;
+      border: 2px solid red;
+      width: 1200px;
+    }
+
+    img {
+      width: 90px;
+      margin: auto;
+      display: block;
+    }
+
+    h3 {
+      margin: 0px;
+      text-align: center;
+    }
+
+    .box {
+      border: 1px solid black;
+      background-color: antiquewhite;
+      margin: 0px;
+      padding: 23px;
+      width: 33%;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+
+    .container {
+      width: 1200px;
+      margin: auto;
+    }
+
+    .li {
+      background-color: #00A82D;
+    }
+
+    .boxx {
+      border: 1px solid #00A82D;
+      width: 800px;
+      height: 50vh;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    var arr = ["Electronics", "Iron", "grinder", "Mixer"]
+
+    function bodyloaded() {
+
+      for (var property of arr) {
+        var createlist = document.createElement('li');
+        createlist.innerHTML = property;
+        document.querySelector("ol").appendChild(createlist);
+
+        var createoption = document.createElement("option");
+        createoption.value = property;
+        createoption.text = property;
+        document.querySelector("select").appendChild(createoption);
+
+        var createtr = document.createElement("tr");
+        var createtd = document.createElement("td");
+        createtd.innerHTML = property;
+        createtr.appendChild(createtd);
+
+        document.querySelector("tbody").appendChild(createtr);
+
+
+      }
+
+
+      // var createimg = document.createElement('img');
+      // createimg.src = "https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg";
+      // createimg.width = "200";
+      // createimg.style.border = "1px dashed #00A82D";
+
+      // document.getElementById("boxx").appendChild(createimg);
+
+    }
+    // var arr = ["Electronics", "Iron", "grinder", "Mixer"]
+    // function createclick() {
+    //   for (var item of arr) {
+    //     var createlist = document.createElement("li");
+    //     createlist.innerHTML = item;
+    //     document.getElementById("orderedid").appendChild(createlist);
+    //   }
+    // }
+
+  </script>
+</head>
+
+<body onload="bodyloaded()">
+  <header class="top">
+    <img src="https://whatstool.business/wp-content/uploads/2023/09/whatstool-logo-whatsapp-api.png" alt="cloud">
+    <h3>Welcome to Harrry's blog</h3>
+  </header>
+
+  <div class="boxx">
+    <button>Krisna Create Element</button>
+    <ol></ol>
+
+    <select></select>
+
+    <table style="margin-top: 40px;" border="2" width="200">
+      <thead>
+        <tr>
+          <th>category</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <div class="container">
+    <div class="box">
+      <h4 class="heading">Heading</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eos, odit natus consequatur nesciunt, mollitia
+        harum ipsa veniam nostrum iste vero tenetur unde, voluptate ab eligendi. Eaque magni nam quibusdam, nulla iure
+        minima sunt!</p>
+    </div>
+    <div class="box">
+      <h4 class="heading">Heading</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eos, odit natus consequatur nesciunt, mollitia
+        harum ipsa veniam nostrum iste vero tenetur unde, voluptate ab eligendi. Eaque magni nam quibusdam, nulla iure
+        minima sunt!</p>
+    </div>
+    <div class="box">
+      <h4 class="heading">Heading</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eos, odit natus consequatur nesciunt, mollitia
+        harum ipsa veniam nostrum iste vero tenetur unde, voluptate ab eligendi. Eaque magni nam quibusdam, nulla iure
+        minima sunt!</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Formatting</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    .invalid-style {
+      border: 1px solid red;
+      box-shadow: 1px 1px 1px red;
+    }
+
+    .valid-style {
+      border: 1px solid green;
+      box-shadow: 1px 1px 1px green;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function VerifyUser() {
+      var username = document.getElementById("UserName").value;
+      var usererror = document.getElementById("UserError");
+      if (username == "") {
+        usererror.innerHTML = "User Name Required";
+        usererror.className = "text-danger fw-bold";
+        document.getElementById("UserName").className = "invalid-style";
+        // usererror.style.fontStyle = "italic";
+      }
+    }
+    function VerifyName() {
+      var username = document.getElementById("UserName").value;
+      var usererror = document.getElementById("UserError");
+      if (username != "") {
+        usererror.innerHTML = "User Verified";
+        usererror.className = "text-success";
+        usererror.style.fontFamily = "Roboto";
+        document.getElementById("UserName").className = "valid-style";
+      }
+    }
+  </script>
+</head>
+
+<body class="container">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">UserName:-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><input style="border-radius: 4px;" onblur="VerifyName()" type="text" id="UserName">
+          <small id="UserError"></small>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary btn-sm" onclick="VerifyUser()">Register</button>
+</body>
+
+</html>

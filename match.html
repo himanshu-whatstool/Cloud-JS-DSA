@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match case for password</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script type="text/javascript">
+    function verifypassword() {
+      var password = document.getElementById("txtpassword").value;
+      var msg = document.getElementById("passwordmsg");
+      var regExp = /(?=.*[A-Z])\w{4,15}/;
+
+      if (password.match(regExp)) {
+        msg.innerHTML = "Strong Password".fontcolor("green");
+        setMeter(1, 100, 100, 0, 0);
+        console.log("if condition here");
+      } else {
+        if (password.length <= 5) {
+          msg.innerHTML = "Poor Password".fontcolor("red");
+          setMeter(1, 100, 100, 60, 80);
+          console.log("length if condition here");
+        } else {
+          msg.innerHTML = "Weak Password".fontcolor("red");
+          setMeter(1, 100, 60, 40, 80);
+          console.log("length else condition here");
+        }
+      }
+    }
+    function checkboxclick() {
+      let showpassword = document.getElementById("txtpassword");
+      if (showpassword.type === "password") {
+        showpassword.type = "text";
+      } else {
+        showpassword.type = "password";
+      }
+    }
+    function setMeter(min, max, value, low, high) {
+      var statusmeter = document.getElementById('statusMeter');
+      statusmeter.min = min;
+      statusmeter.max = max;
+      statusmeter.value = value;
+      statusmeter.low = low;
+      statusmeter.high = high;
+    }
+
+  </script>
+  <style>
+    meter,
+    .inmeter {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <fieldset>
+    <legend>verify password</legend>
+    <div>
+      <input autofocus onkeyup="verifypassword()" class="form-control mb-3 inmeter" type="password" id="txtpassword">
+      <div onclick="checkboxclick()"><input style="cursor: pointer;" type="checkbox">&nbsp;Show Password</div>
+      <div>
+        <meter value="" id="statusMeter" min="1" max="100"></meter>
+      </div>
+      <div class="mt-2" id="passwordmsg"></div>
+    </div>
+
+    <!-- <div class="input-group mb-3">
+      <input type="password" class="form-control-lg" id="eyepassword">
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="bi bi-eye-fill" id="iconPassword"></i></span>
+        <span class="input-group-text"><i class="bi bi-eye-slash-fill" id="togglePassword"></i></span>
+      </div>
+    </div> -->
+
+  </fieldset>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Button Example</title>
+
+  <script>
+    function handlenextfirst() {
+      document.getElementById("inquirysection").style.display = "block";
+      document.getElementById("recyclasection").style.display = "none";
+    }
+
+    function handlebacksecond() {
+      document.getElementById("recyclasection").style.display = "block";
+      document.getElementById("inquirysection").style.display = "none";
+    }
+
+    function handlenextsecond() {
+      document.getElementById("formsection").style.display = "block";
+      document.getElementById("inquirysection").style.display = "none";
+    }
+
+    function handlebackthird() {
+      document.getElementById("inquirysection").style.display = "block";
+      document.getElementById("formsection").style.display = "none";
+    }
+  </script>
+</head>
+
+<body>
+  <section style="margin: auto; width: 60%;">
+    <div id="recyclasection"
+      style="border: 1px solid #616874; padding: 20px; background-color: #fffff9; border-radius: 4px;">
+      <p>This is <b>first section</b></p>
+      <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+      <div style="display: flex; justify-content: space-between; padding-top: 28px;">
+        <div></div>
+        <button onclick="handlenextfirst()"
+          style="background-color: lemonchiffon; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Next</button>
+      </div>
+    </div>
+
+    <div id="inquirysection"
+      style="display: none; border: 1px solid #616874; padding: 20px; background-color: #fffff9; border-radius: 4px; margin-top: 20px;">
+      <p>This is <b>Second section</b></p>
+      <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+      <div style="display: flex; justify-content: space-between; padding-top: 28px;">
+        <button onclick="handlebacksecond()"
+          style="background-color: #00A82D; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; color: #fff;">Back</button>
+        <button onclick="handlenextsecond()"
+          style="background-color: lemonchiffon; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Next</button>
+      </div>
+    </div>
+
+    <div id="formsection"
+      style="display: none; border: 1px solid #616874; padding: 20px; background-color: #fffff9; border-radius: 4px; margin-top: 20px; ">
+      <p>This is <b>Third section</b></p>
+      <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+      <div style="display: flex; justify-content: space-between; padding-top: 28px; ">
+        <button onclick="handlebackthird()"
+          style="background-color: #00A82D; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; color: #fff;">Back</button>
+        <button
+          style="background-color: lemonchiffon; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Get
+          quotes!</button>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

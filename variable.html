@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function calculate() {
+      // var age = document.getElementById("agenumber").value;
+      // // document.getElementById("msg").innerHTML = (parseInt(age) + 3);
+      // document.getElementById("msg").innerHTML = (parseInt(age) + 1);
+
+      var age = document.getElementById("agenumber").value;
+      var msg = document.getElementById("msg");
+
+      if (isNaN(age)) {
+        msg.innerHTML = "please Enter a number";
+      } else {
+        msg.innerHTML = "Your age : " + age;
+      }
+    }
+
+  </script>
+
+</head>
+
+<body style="text-align: center;">
+  <p>Variables</p>
+  age:<input type="text" id="agenumber">
+  <button type="submit" onclick="calculate()">Calculate</button>
+  <span id="msg"></span>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store fakeAPI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script>
+
+    function LoadProduct(id) {
+      fetch(`https://fakestoreapi.com/products/${id}`)
+        .then(function (response) {
+          return response.json()
+        })
+
+        .then(function (data) {
+          document.getElementById("imgid").src = data.image;
+          document.getElementById("titleid").innerHTML = data.title;
+          document.getElementById("descriptionid").innerHTML = data.description;
+          document.getElementById("priceid").innerHTML = data.price;
+          document.getElementById("rateid").innerHTML = data.rating.rate;
+          document.getElementById("countid").innerHTML = data.rating.count;
+        })
+    }
+
+    function bodyLoad() {
+      LoadProduct(1)
+    }
+    var productId = 1;
+    function prevclick() {
+      productId--;
+      LoadProduct(productId)
+    }
+    function nextclick() {
+      productId++;
+      LoadProduct(productId)
+    }
+
+  </script>
+
+</head>
+
+<body onload="bodyLoad()" class="container mt-5">
+  <div class="card" style="width: 38rem;">
+    <img id="imgid" height="170" width="200px" class="img-fluid">
+    <div class="card-body">
+      <h5 id="titleid" class="card-title"></h5>
+      <p id="descriptionid" class="card-text"></p>
+      <p id="priceid"></p>
+      <div class="d-flex justify-content-between">
+        <p id="rateid"></p>
+        <p id="countid"></p>
+      </div>
+      <button onclick="prevclick()" class="btn btn-sm border border-black"><i
+          class="bi bi-arrow-left-circle"></i></button>
+      <button onclick="nextclick()" class="btn btn-sm border border-black"><i
+          class="bi bi-arrow-right-circle"></i></button>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+</head>
+<script>
+  function productclick() {
+
+    fetch("./data/product.json") // its inside of binary data
+      .then(function (response) {
+        return response.json() // convert into binary data to json data
+      })
+
+      .then(function (product) { // this data is your product data
+        document.getElementById("lblName").innerHTML = product.name;
+        document.getElementById("lblPrice").innerHTML = product.price;
+        document.getElementById("ProductImg").src = product.photo;
+        document.getElementById("lblstock").innerHTML = (product.Stock === true) ? "Available" : "Out of Stock";
+      })
+
+
+    document.getElementById("tableid").style.display = "block";
+
+  }
+
+</script>
+
+<body class="container">
+  <div class="mt-4">
+    <button class="btn btn-info" onclick="productclick()">Get Product</button>
+  </div>
+  <div style="display: none;" id="tableid">
+    <h3>Products</h3>
+    <dl>
+      <dt>Name</dt>
+      <dd id="lblName"></dd>
+      <dt>Price</dt>
+      <dd id="lblPrice"></dd>
+      <dt>Preview</dt>
+      <dd>
+        <img id="ProductImg" width="100" height="100">
+      </dd>
+      <dt>Stock</dt>
+      <dd id="lblstock"></dd>
+    </dl>
+    <!-- <dl> // datalist
+      <dt>Name</dt> // dataterm
+      <dd id="lblName"></dd> // datadefination
+      <dt></dt>
+    </dl> -->
+  </div>
+
+</body>
+
+</html>

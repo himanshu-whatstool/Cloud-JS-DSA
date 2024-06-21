@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array of Objects</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <script>
+    function bodyload() {
+      fetch("../data/products.json")
+        .then((respose) => {
+          return respose.json();
+        })
+        .then((product) => {
+          for (var item of product) {
+
+            var tr = document.createElement("tr");
+            var tdName = document.createElement("td");
+            var tdPrice = document.createElement("td");
+            var tdPhoto = document.createElement("td");
+
+            tdName.innerHTML = item.Name;
+            tdPrice.innerHTML = item.Price;
+            var img = document.createElement("img")
+            img.width = 100;
+            img.height = 100;
+            img.src = item.photo;
+            img.className = 'rounded-pill';
+
+            tdPhoto.appendChild(img);
+
+            tr.appendChild(tdName);
+            tr.appendChild(tdPrice);
+            tr.appendChild(tdPhoto);
+
+            document.querySelector("tbody").appendChild(tr);
+          }
+
+        })
+
+    }
+  </script>
+
+</head>
+
+<body onload="bodyload()" class="container">
+  <h4>Products Table</h4>
+  <table class="table table-hover">
+    <thead class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Photo</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+  </table>
+
+</body>
+
+</html>

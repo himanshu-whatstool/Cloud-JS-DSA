@@ -1,0 +1,21 @@
+<script>
+
+  var product = {
+
+    "Name": "",
+    "Price": 0,
+    "Qty": 0,
+    "Total": function () {
+      return this.Price * this.Qty;
+    },
+    "Print": function () {
+      document.write(`Name=${this.Name}<br>price=${this.Price}<br>Qty=${this.Qty}<br>Total=${this.Total()}`);
+    }
+  }
+  product.Name = prompt("Enter Name"); // pseudo class
+  product.Price = parseFloat(prompt("Enter Price"));
+  product.Qty = parseInt(prompt("Enter Qty"));
+  product.Print();
+
+
+</script>

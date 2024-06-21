@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Fakestore</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script>
+    function LoadProducts() {
+      fetch("http://fakestoreapi.com/products")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          for (var item of data) {
+            var div = document.createElement("div");
+            div.className = "card m-2 p-2";
+            div.style.width = "200px";
+            div.innerHTML = `
+                         <img src=${item.image} height="150" class="card-img-top">
+                         <div class="card-header" style="height:180px">
+                            <p>${item.title}</p>
+                         </div>
+                         <div class="card-body">
+                            <dl>
+                                <dt>Price</dt>
+                                <dd>${item.price}</dd>
+                                <dt>Rating</dt>
+                                <dd>
+                                    <span class="bi bi-star-fill text-success"></span> ${item.rating.rate}
+                                     [${item.rating.count}]
+                                </dd>
+                            </dl>
+                         </div>
+                         <div class="card-footer">
+                            <button class="btn btn-danger w-100"> <span class="bi bi-cart4"></span> Add to Cart </button>  
+                         </div>
+                        `;
+
+            document.getElementById("catalog").appendChild(div);
+          }
+        })
+    }
+
+    function LoadCategories() {
+      fetch("http://fakestoreapi.com/products/categories")
+        .then((response) => {
+          return response.json();
+        })
+        .then((category) => {
+          category.unshift("ALL");
+          for (var item of category) {
+            var option = document.createElement("option");
+            option.text = item.toUpperCase();
+            option.value = item;
+
+            document.querySelector("select").appendChild(option);
+
+          }
+        })
+    }
+
+    function bodyload() {
+      LoadProducts();
+      LoadCategories();
+    }
+  </script>
+</head>
+
+<body onload="bodyload()" class="container-xs">
+  <header class="bg-danger text-white text-center">
+    <h3>FakeStore API</h3>
+  </header>
+  <div class="row m-4">
+    <div class="col-2">
+      <div>
+        <label for="">Select Category</label>
+        <div>
+          <select class="form-control"></select>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="d-flex flex-wrap overflow-auto" style="height: 550px;" id="catalog">
+      </div>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-danger btn-sm w-100">Your Cart Items</button>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
